@@ -1,0 +1,4 @@
+#!/bin/bash
+/show/listecho "Stop $1" $ERR
+supervisorctl stop $1
+

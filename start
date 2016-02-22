@@ -1,0 +1,3 @@
+#!/bin/bash
+/show/listecho "Start $1" $OK
+supervisorctl start $1

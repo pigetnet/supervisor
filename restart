@@ -1,0 +1,4 @@
+#!/bin/bash
+/show/listecho "Restarting $1" $OK
+supervisorctl stop $1
+supervisorctl start $1

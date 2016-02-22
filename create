@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ $# -eq 2 ];then
+	serviceName=$1
+	command=$2
+	/show/description "Install $serviceName as a service"
+	/system/install supervisor
+
+/show/listecho "Create /etc/supervisor/conf.d/$serviceName.conf"
+cat <<EOF > /etc/supervisor/conf.d/$serviceName.conf
+[program:$serviceName]
+command=$command
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/$serviceName.log
+redirect_stderr=true
+EOF
+supervisorctl reread
+supervisorctl update
+
+# /show/file /etc/supervisor/conf.d/$serviceName.conf
+
+else
+	/show/description "/do/supervisor/create serviceName command"
+fi
