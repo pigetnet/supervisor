@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -f /var/log/$1.log
+tail /var/log/$1.log
